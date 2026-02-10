@@ -1,0 +1,195 @@
+<html>
+<head>
+    <title>Galeri - Situsku.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            border: 2px solid white;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Modal untuk gambar diperbesar */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 50px;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .caption {
+            text-align: center;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body bgcolor="black">
+
+<table border="1" align="center" width="900">
+
+<tr>
+     <td colspan="2" height="150" align="center"
+        background="air.jpg"
+        style="background-size: cover; background-position: center;">
+        
+        <font color="white" size="6"><b>Situsku.com</b>
+         </font>
+          <hr width="300"> 
+        <font color="white"></font>
+        <marquee direction="right" style="color: white;">
+            Disini semua berita tersedia.
+        </marquee>
+     </td>
+</tr>
+
+<tr height="400">
+    <td bgcolor="#111111" width="200" valign="top"> 
+        
+        <a href="./Pertemuan_3.html" style="color: white; text-decoration: none; display: block; padding: 10px; border-bottom: 2px solid white;"> Home</a>
+        <a href="./Pertemuan_4.html" style="color: white; text-decoration: none; display: block; padding: 10px; border-bottom: 2px solid white;background-color:#ADD8E6;"> Galeri</a>
+        <a href="./profile.html" style="color: black; text-decoration: none; display: block; padding: 10px; border-bottom: 2px solid white;"> Profile</a>
+    </td>
+
+ <td valign="top" background="api.jpg">
+    <font color="white">
+        <b>Selamat Datang di <b>Galeri - Situsku.Com</b></b><br><br>
+        Disini berisi Foto-foto dari hasil dari berita yang berada di Situsku.com.<br>
+        Dapatkan berita berita menarik tentang politik, hukum, keamanan, gosip artis dan kuliner di indonesia disini.
+        <br><br>
+        
+        
+        <b>Galeri Foto Berita:</b><br>
+        <div class="gallery-container">
+            
+            <img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=200&h=2t=crop" 
+                 alt="Berita Politik" 
+                 class="gallery-item"
+                 onclick="openModal(this.src, 'Berita Politik Terkini')">
+            
+            
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=200&h=200&fit=crop" 
+                 alt="Berita Hukum" 
+                 class="gallery-item"
+                 onclick="openModal(this.src, 'Berita Hukum Terbaru')">
+            
+            
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=200&h=200&fit=crop" 
+                 alt="Berita Kuliner" 
+                 class="gallery-item"
+                 onclick="openModal(this.src, 'Berita Kuliner Indonesia')">
+            
+            
+            <img src="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?w=200&h=200&fit=crop" 
+                 alt="Berita Artis" 
+                 class="gallery-item"
+                 onclick="openModal(this.src, 'Berita Artis Terkini')">
+            
+            
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop" 
+                 alt="Berita Keamanan" 
+                 class="gallery-item"
+                 onclick="openModal(this.src, 'Berita Keamanan Nasional')">
+            
+            
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=200&h=200&fit=crop" 
+                 alt="Berita Ekonomi" 
+                 class="gallery-item"
+                 onclick="openModal(this.src, 'Berita Ekonomi Indonesia')">
+        </div>
+        
+        <br>
+        <i>*Klik gambar untuk memperbesar*</i>
+    </font>
+    
+    
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption" class="caption"></div>
+    </div>
+    
+    <script>
+        
+        function openModal(src, caption) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('caption').innerHTML = caption;
+            document.getElementById('imageModal').style.display = "block";
+        }
+    
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
+        
+        document.getElementById('imageModal').onclick = function(event) {
+            if (event.target.className === 'modal') {
+                closeModal();
+            }
+            
+        }
+        
+        document.onkeydown = function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        }
+    </script>
+ </td>
+</tr>
+
+<tr>
+    <td colspan="2" height="120" align="center" style="background: linear-gradient(to bottom, #1a365d, #2d3748, #1a202c);">
+        <font color="white" size="2">
+            <b>Copyright &copy; 2023 Situsku.com</b><br>
+            Hubungi kami<br>
+            Email: info@situsku.com<br>
+            <hr width="300">
+            <i>Terima kasih telah mengunjungi situs kami</i>
+        </font>
+    </td>
+</tr>
+</table>
+</body>
+</html>
